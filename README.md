@@ -15,15 +15,21 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Vercel (or any Next.js host):
-
 ```bash
-npx vercel
+npx vercel login
+npx vercel --prod
 ```
 
 ## Public GitHub
 
-This repository is meant to be public. Other product repos should be sanitized before they go public:
+This repository is on `main` locally. After you create a public GitHub repo:
+
+```bash
+git remote add origin git@github.com:<your-user>/saad-portfolio.git
+git push -u origin main
+```
+
+Other product repos should be sanitized before they go public:
 
 - Never commit `.env`, keys, or demo passwords
 - Frame Aurex as a **demo trading UI / ops desk**, not a licensed broker
