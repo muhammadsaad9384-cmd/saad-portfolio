@@ -25,7 +25,7 @@ npx vercel --prod
 This repository is on `main` locally. After you create a public GitHub repo:
 
 ```bash
-git remote add origin git@github.com:<your-user>/saad-portfolio.git
+git remote add origin https://github.com/muhammadsaad9384-cmd/saad-portfolio.git
 git push -u origin main
 ```
 

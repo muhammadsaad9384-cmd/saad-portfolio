@@ -26,6 +26,7 @@ export const projects: Project[] = [
   {
     slug: "aurex",
     title: "Aurex",
+    github: "https://github.com/muhammadsaad9384-cmd/aurex",
     role: "Full-stack + Android client",
     year: "2026",
     summary:
@@ -95,6 +96,7 @@ export const projects: Project[] = [
   {
     slug: "creovox",
     title: "Creovox",
+    github: "https://github.com/muhammadsaad9384-cmd/creovox",
     role: "Full-stack SaaS",
     year: "2026",
     summary:
@@ -252,6 +254,7 @@ export const projects: Project[] = [
   {
     slug: "dk-enterprise",
     title: "DK Enterprise",
+    github: "https://github.com/muhammadsaad9384-cmd/dk-enterprise",
     role: "Frontend, APIs, wholesale UX",
     year: "2026",
     summary:
@@ -328,6 +331,7 @@ export const projects: Project[] = [
   {
     slug: "flutter-android",
     title: "Flutter & Android clients",
+    github: "https://github.com/muhammadsaad9384-cmd/aurex",
     role: "Mobile engineer",
     year: "2025–2026",
     summary:

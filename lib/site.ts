@@ -5,7 +5,7 @@ export const site = {
   summary:
     "I build Next.js products, APIs, Flutter clients, commerce systems, and blockchain wallets. Case studies on this site show the real pages.",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "muhammadsaad9384@gmail.com",
-  github: process.env.NEXT_PUBLIC_GITHUB ?? "",
+  github: process.env.NEXT_PUBLIC_GITHUB ?? "https://github.com/muhammadsaad9384-cmd/saad-portfolio",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN ?? "",
 };
 
