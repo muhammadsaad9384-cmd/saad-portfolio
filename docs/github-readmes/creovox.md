@@ -1,6 +1,6 @@
 # Creovox (portfolio README)
 
-AI image and video SaaS: Google auth, Stripe credits, Replicate models, character builder, gallery, admin.
+Image and video SaaS: Google auth, Stripe credits, Replicate models, character builder, gallery, admin.
 
 ## Stack
 

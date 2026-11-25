@@ -1,3 +1,10 @@
+export type Screen = {
+  title: string;
+  path: string;
+  src: string;
+  alt: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -8,8 +15,10 @@ export type Project = {
   outcome: string;
   stack: string[];
   bullets: string[];
-  images: { src: string; alt: string }[];
+  screens: Screen[];
+  sitemap: string[];
   github?: string;
+  sourceLabel: string;
   demoNote: string;
 };
 
@@ -24,7 +33,7 @@ export const projects: Project[] = [
     problem:
       "The desk needed a trader cabin and an ops console on one codebase, with a phone client that did not wait on a native rewrite.",
     outcome:
-      "Next.js desk at /trade and /ops, Prisma-backed matching and cash desk, Android WebView shell for device UAT. Framed as a demo trading UI — not a licensed retail broker.",
+      "Next.js desk at /trade and /ops, Prisma-backed matching and cash desk, Android WebView shell for device UAT. Framed as a demo trading UI, not a licensed retail broker.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -40,22 +49,48 @@ export const projects: Project[] = [
       "Android debug APK opens the same mobile layout; Flutter cabin kept as layout reference after the WebView cutover.",
       "AWS-oriented deploy notes (EC2, RDS, ALB) for a production-shaped environment.",
     ],
-    images: [
+    screens: [
       {
-        src: "/images/work/aurex-hero.png",
-        alt: "Aurex desk marketing hero",
+        title: "Live desk",
+        path: "/trade",
+        src: "/images/work/aurex-desk.png",
+        alt: "Aurex live desk with the BTCUSD chart, account balance, and Up and Down ticket panel.",
       },
       {
-        src: "/images/work/aurex-cabin.png",
-        alt: "Aurex trader cabin on a phone frame",
-      },
-      {
-        src: "/images/work/aurex-tape.jpg",
-        alt: "Aurex tape and market UI",
+        title: "Phone desk",
+        path: "/trade",
+        src: "/images/work/aurex-mobile-desk.png",
+        alt: "Aurex phone screen of the same live desk, with the chart, amount, time, and trade controls.",
       },
     ],
+    sitemap: [
+      "/",
+      "/trade",
+      "/spot",
+      "/futures",
+      "/wallet",
+      "/kyc",
+      "/history",
+      "/alerts",
+      "/inbox",
+      "/settings",
+      "/login",
+      "/register",
+      "/vip",
+      "/prop",
+      "/leaderboard",
+      "/signals",
+      "/ops",
+      "/ops/users",
+      "/ops/kyc",
+      "/ops/cash",
+      "/ops/payments",
+      "/ops/trading",
+      "/ops/markets",
+    ],
+    sourceLabel: "Private repo. Walkthrough on this page",
     demoNote:
-      "Public retail deploy is withheld. Recruiters can review architecture, screenshots, and a local or recorded walkthrough.",
+      "Not deployed as public retail. The walkthrough uses the live desk at desktop width and on a phone screen. This is a client UAT cabin, not a licensed broker.",
   },
   {
     slug: "creovox",
@@ -63,7 +98,7 @@ export const projects: Project[] = [
     role: "Full-stack SaaS",
     year: "2026",
     summary:
-      "AI image and video platform with Google auth, credit subscriptions, generation pipelines, a character builder, gallery, and admin.",
+      "Image and video generation platform with Google auth, credit subscriptions, generation pipelines, a character builder, gallery, and admin.",
     problem:
       "Creators needed one product for image models, video models, credits, and billing instead of stitching separate tools.",
     outcome:
@@ -81,16 +116,43 @@ export const projects: Project[] = [
       "Credit-based Essential / Advanced / Infinite plans via Stripe checkout and webhooks.",
       "Image (FLUX, SDXL) and video (MiniMax, Luma, Stable Video) routes behind a shared credit ledger.",
       "Character builder for reuse across generations; gallery with download and delete.",
-      "Runs in demo mode with placeholders when Replicate is not configured — useful for review without paid keys.",
+      "Runs in demo mode with placeholders when Replicate is not configured.",
     ],
-    images: [
+    screens: [
       {
+        title: "Landing",
+        path: "/",
         src: "/images/work/creovox-hero.png",
         alt: "Creovox product landing",
       },
+      {
+        title: "Pricing",
+        path: "/pricing",
+        src: "/images/work/creovox-pricing.png",
+        alt: "Creovox credit pricing plans",
+      },
+      {
+        title: "Sign in",
+        path: "/login",
+        src: "/images/work/creovox-login.png",
+        alt: "Creovox Google sign-in",
+      },
     ],
+    sitemap: [
+      "/",
+      "/pricing",
+      "/login",
+      "/dashboard",
+      "/generate/image",
+      "/generate/video",
+      "/gallery",
+      "/characters",
+      "/settings",
+      "/admin",
+    ],
+    sourceLabel: "Private repo. Public pages captured locally",
     demoNote:
-      "Safe to demo locally in demo mode. A hosted preview can be added on Vercel without production secrets.",
+      "Auth-gated studio pages (generate, gallery, admin) sit behind Google sign-in. Public pages are captured here; remaining routes are listed in the sitemap.",
   },
   {
     slug: "barakah",
@@ -98,7 +160,7 @@ export const projects: Project[] = [
     role: "Commerce platform + admin",
     year: "2026",
     summary:
-      "Custom luxury storefront and admin in one Next.js app: lookbook, collections, checkout, i18n, Redis-cached catalog. Not Shopify — Shopify-grade commerce, owned end to end.",
+      "Custom luxury storefront and admin in one Next.js app: lookbook, collections, checkout, i18n, Redis-cached catalog. Not Shopify. Shopify-grade commerce, owned end to end.",
     problem:
       "A high-end leather house needed editorial motion, merchandising, and ops without handing the stack to a hosted theme.",
     outcome:
@@ -119,18 +181,73 @@ export const projects: Project[] = [
       "Public pages in English, French, Italian, German, and Spanish with English fallback.",
       "Anonymous HTML cache plus Redis; admin saves bust the catalog cache.",
     ],
-    images: [
+    screens: [
       {
+        title: "Editorial home",
+        path: "/en",
         src: "/images/work/barakah-hero.jpg",
-        alt: "Barakah editorial storefront hero",
+        alt: "Barakah storefront hero",
       },
       {
+        title: "Lookbook",
+        path: "/en/collections",
         src: "/images/work/barakah-look.jpg",
-        alt: "Barakah lookbook still",
+        alt: "Barakah lookbook",
+      },
+      {
+        title: "Campaign",
+        path: "/en",
+        src: "/images/work/barakah-hero-2.jpg",
+        alt: "Barakah second hero campaign",
+      },
+      {
+        title: "Atelier story",
+        path: "/en/pages",
+        src: "/images/work/barakah-atelier.jpg",
+        alt: "Barakah atelier editorial",
+      },
+      {
+        title: "Journal",
+        path: "/en/blog",
+        src: "/images/work/barakah-story.jpg",
+        alt: "Barakah journal still",
+      },
+      {
+        title: "Press",
+        path: "/en/pages",
+        src: "/images/work/barakah-press.jpg",
+        alt: "Barakah press still",
+      },
+      {
+        title: "Product",
+        path: "/en/products/[slug]",
+        src: "/images/work/barakah-product.jpg",
+        alt: "Barakah product still",
       },
     ],
+    sitemap: [
+      "/en",
+      "/en/collections/[slug]",
+      "/en/products/[slug]",
+      "/en/cart",
+      "/en/checkout",
+      "/en/search",
+      "/en/blog",
+      "/en/faq",
+      "/en/contact",
+      "/admin",
+      "/admin/products",
+      "/admin/orders",
+      "/admin/inventory",
+      "/admin/collections",
+      "/admin/discounts",
+      "/admin/customers",
+      "/admin/content",
+      "/admin/analytics",
+    ],
+    sourceLabel: "Private repo. Access on request",
     demoNote:
-      "Runs locally with Postgres and Redis. Product media is first-party; no third-party storefront lock-in.",
+      "Storefront media is first-party. Admin is listed in the sitemap; live admin stays private.",
   },
   {
     slug: "dk-enterprise",
@@ -157,14 +274,56 @@ export const projects: Project[] = [
       "Locale selector and currency display for international wholesale buyers.",
       "SEO, sitemap, and content guides for fabric and production education.",
     ],
-    images: [
+    screens: [
       {
-        src: "/images/work/dk-hero.jpg",
-        alt: "DK Enterprise factory-floor brand photography",
+        title: "Home",
+        path: "/",
+        src: "/images/work/dk-home.png",
+        alt: "DK Enterprise factory-floor home",
+      },
+      {
+        title: "Wholesale catalog",
+        path: "/shop",
+        src: "/images/work/dk-shop.png",
+        alt: "DK wholesale catalog grid",
+      },
+      {
+        title: "Product + sample order",
+        path: "/shop/heavy-oversized-tshirt",
+        src: "/images/work/dk-product.png",
+        alt: "DK product detail and sample inquiry",
+      },
+      {
+        title: "VIP pricing",
+        path: "/vip",
+        src: "/images/work/dk-vip.png",
+        alt: "DK VIP wholesale application",
+      },
+      {
+        title: "Fabric story",
+        path: "/vip",
+        src: "/images/work/dk-fabric.jpg",
+        alt: "DK fabric comparison still",
       },
     ],
+    sitemap: [
+      "/",
+      "/shop",
+      "/shop/[slug]",
+      "/vip",
+      "/guides",
+      "/guides/[slug]",
+      "/about",
+      "/contact",
+      "/cart",
+      "/checkout",
+      "/login",
+      "/register",
+      "/admin/products",
+    ],
+    sourceLabel: "Private business repo. Full public pages on this site",
     demoNote:
-      "Business site; public GitHub can be a sanitized slice. Case study focuses on catalog, auth, and admin APIs.",
+      "Home, catalog, product, and VIP were captured from the running app. Admin remains private.",
   },
   {
     slug: "flutter-android",
@@ -182,20 +341,31 @@ export const projects: Project[] = [
       "Flutter trader cabin built, then cancelled in favour of one web cabin + thin native shell.",
       "Gradle debug APK with adb reverse and LAN desk URL for testers.",
       "Play Store kit prepared for a live HTTPS origin and Trusted Web Activity.",
-      "Same mobile CSS layout on web and in the WebView — no double feature work.",
+      "Same mobile CSS layout on web and in the WebView. No double feature work.",
     ],
-    images: [
+    screens: [
       {
-        src: "/images/work/aurex-cabin.png",
-        alt: "Aurex cabin in a phone frame",
+        title: "Live desk",
+        path: "/trade",
+        src: "/images/work/aurex-desk.png",
+        alt: "Desktop Aurex desk with the chart visible. This is the cabin the Android client loads.",
       },
       {
-        src: "/images/work/aurex-mobile.jpg",
-        alt: "Aurex mobile marketing slide",
+        title: "Phone screen",
+        path: "Android WebView",
+        src: "/images/work/aurex-mobile-desk.png",
+        alt: "Phone screen of the Aurex desk, the layout shown inside the Android WebView.",
       },
     ],
+    sitemap: [
+      "Flutter cabin (cancelled, layout reference)",
+      "Android WebView APK",
+      "Desk URL override (debug)",
+      "Play Store / TWA kit",
+    ],
+    sourceLabel: "Private mobile trees",
     demoNote:
-      "APK and Flutter tree stay private. Screenshots and architecture are the public proof.",
+      "The APK stays private. These captures are the cabin the WebView loads: the desktop desk and the same desk on a phone screen.",
   },
   {
     slug: "shopify-commerce",
@@ -222,17 +392,52 @@ export const projects: Project[] = [
       "Comfortable on Shopify Admin, Storefront, and theme/extension surfaces when the merchant stays on Shopify.",
       "Clear split: use Shopify when ops already live there; use custom Next.js when the product is the platform.",
     ],
-    images: [
+    screens: [
       {
+        title: "Custom lookbook",
+        path: "Barakah /en",
         src: "/images/work/barakah-look.jpg",
-        alt: "Custom commerce lookbook used as merchandising proof",
+        alt: "Custom commerce lookbook",
+      },
+      {
+        title: "Wholesale catalog",
+        path: "DK /shop",
+        src: "/images/work/dk-shop.png",
+        alt: "Wholesale catalog as commerce proof",
+      },
+      {
+        title: "Product merchandising",
+        path: "DK /shop/[slug]",
+        src: "/images/work/dk-product.png",
+        alt: "Product merchandising and sample order",
+      },
+      {
+        title: "Editorial PDP media",
+        path: "Barakah /products",
+        src: "/images/work/barakah-product.jpg",
+        alt: "Editorial product still",
       },
     ],
+    sitemap: [
+      "Storefront home",
+      "Collections",
+      "PDP",
+      "Cart / checkout",
+      "Admin merchandising",
+      "Shopify Admin / Storefront APIs (when the merchant is on Shopify)",
+    ],
+    sourceLabel: "See Barakah and DK case studies",
     demoNote:
-      "Shopify merchant dashboards stay private. Public proof is the custom commerce code and this case study.",
+      "Shopify merchant dashboards stay private. Public proof is the custom commerce walkthroughs on this site.",
   },
 ];
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
+}
+
+export function coverSrc(src: string) {
+  const file = src.split("/").pop() ?? src;
+  const base = file.replace(/\.(png|jpe?g|webp)$/i, "");
+  return `/images/covers/${base}.jpg`;
 }

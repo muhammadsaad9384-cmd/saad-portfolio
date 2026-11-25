@@ -1,26 +1,39 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/page-transition";
 import { ProjectCard } from "@/components/project-card";
+import { Reveal } from "@/components/reveal";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Case studies from Cursor-built products: trading desk, AI SaaS, custom ecom, wholesale, Flutter, and Shopify-grade commerce.",
+    "Walk through every major page of the products: screenshots, route maps, and source notes.",
 };
 
 export default function WorkPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
-      <h1 className="font-serif text-4xl tracking-tight sm:text-5xl">Work</h1>
-      <p className="mt-4 max-w-2xl text-muted">
-        Product sites do not need to be on a public domain. Each case study is
-        backed by a local repo, architecture, and first-party screenshots.
-      </p>
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+    <PageTransition>
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
+        <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase">
+          Portfolio
+        </p>
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-5xl">Work</h1>
+        <p className="mt-3 max-w-xl text-muted">
+          Click a project for the full walkthrough: captured screens and every
+          route. Live domains are not required.
+        </p>
+        <div className="mt-12 grid min-w-0 gap-10 sm:gap-12 md:grid-cols-2">
+          {projects.map((project, index) => (
+            <Reveal
+              key={project.slug}
+              delay={(index % 2) * 110}
+              variant="scale"
+            >
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }

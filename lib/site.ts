@@ -1,9 +1,9 @@
 export const site = {
   name: "Saad Bakshi",
   title: "Full-stack product engineer",
-  location: "Open to roles in Europe",
+  location: "Available for work",
   summary:
-    "I ship production-quality apps across Next.js, TypeScript APIs, Flutter, and commerce. Architecture and delivery stay human-owned; development is AI-assisted.",
+    "I build Next.js products, APIs, Flutter clients, commerce systems, and blockchain wallets. Case studies on this site show the real pages.",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "muhammadsaad9384@gmail.com",
   github: process.env.NEXT_PUBLIC_GITHUB ?? "",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN ?? "",
@@ -24,4 +24,8 @@ export const stack = [
   "Shopify",
   "Docker",
   "REST APIs",
+  "Solidity",
+  "ethers.js / viem",
+  "WalletConnect",
+  "Foundry",
 ];

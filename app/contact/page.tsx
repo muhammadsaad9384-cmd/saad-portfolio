@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { MagneticBtn } from "@/components/magnetic-btn";
+import { PageTransition } from "@/components/page-transition";
+import { Reveal } from "@/components/reveal";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -6,61 +9,40 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const hasLinks = site.email || site.github || site.linkedin;
-
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="font-serif text-4xl tracking-tight sm:text-5xl">
-        Contact
-      </h1>
-      <p className="mt-6 text-muted">
-        For roles in Europe, the fastest path is email or LinkedIn. Set{" "}
-        <code className="font-mono text-sm">NEXT_PUBLIC_EMAIL</code>,{" "}
-        <code className="font-mono text-sm">NEXT_PUBLIC_GITHUB</code>, and{" "}
-        <code className="font-mono text-sm">NEXT_PUBLIC_LINKEDIN</code> in{" "}
-        <code className="font-mono text-sm">.env.local</code> so these links
-        stay yours.
-      </p>
-      {hasLinks ? (
-        <ul className="mt-8 space-y-3 text-base">
-          {site.email ? (
-            <li>
-              <a className="underline" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-            </li>
-          ) : null}
-          {site.github ? (
-            <li>
-              <a
-                className="underline"
-                href={site.github}
-                rel="noreferrer"
-                target="_blank"
-              >
-                GitHub
-              </a>
-            </li>
-          ) : null}
-          {site.linkedin ? (
-            <li>
-              <a
-                className="underline"
-                href={site.linkedin}
-                rel="noreferrer"
-                target="_blank"
-              >
-                LinkedIn
-              </a>
-            </li>
-          ) : null}
-        </ul>
-      ) : (
-        <p className="mt-8 text-sm text-muted">
-          Links are empty until environment variables are set. The live
-          portfolio URL is still the right thing to put on a CV.
+    <PageTransition>
+      <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-16">
+        <p className="text-xs font-semibold tracking-wider text-blue-600 uppercase">
+          Email
         </p>
-      )}
-    </div>
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Contact</h1>
+        <p className="mt-4 text-muted">Roles, walkthroughs, source access.</p>
+        <Reveal delay={100}>
+          <div className="mt-8 rounded-2xl border border-line bg-white p-5 shadow-sm sm:p-8">
+            {site.email ? (
+              <>
+                <p className="break-all text-base font-semibold tracking-tight sm:text-xl">
+                  {site.email}
+                </p>
+                <div className="mt-5">
+                  <MagneticBtn href={`mailto:${site.email}`}>Email me</MagneticBtn>
+                </div>
+              </>
+            ) : null}
+            {site.github ? (
+              <p className="mt-4">
+                <MagneticBtn href={site.github} variant="text" external>
+                  GitHub
+                </MagneticBtn>
+              </p>
+            ) : (
+              <p className="mt-4 text-sm text-muted">
+                Public GitHub is not linked yet. Walkthroughs are on this site.
+              </p>
+            )}
+          </div>
+        </Reveal>
+      </div>
+    </PageTransition>
   );
 }
